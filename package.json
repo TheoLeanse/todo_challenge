@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/TheoLeanse/todo_challenge#readme",
   "dependencies": {
+    "bower": "^1.4.1",
     "express": "^4.13.2"
   }
 }
