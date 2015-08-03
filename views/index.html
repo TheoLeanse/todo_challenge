@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html ng-app="ToDoApp">
+
+  <head>
+
+    <meta charset="utf-8">
+
+    <title>ToDo App</title>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <script src="angular/angular.js"></script>
+
+    <script src="javascripts/angularApp.js"></script>
+
+  </head>
+
+  <body ng-controller="TaskController as taskCtrl">
+
+    <input ng-model="taskCtrl.submittedTask"></input>
+
+    <button id="task_submit_button" ng-click="taskCtrl.addTask(taskCtrl.submittedTask); taskCtrl.submittedTask = ''">
+
+      Add Task
+
+    </button>
+
+    <ul ng-repeat="task in taskCtrl.tasks">
+
+      <li>
+
+        <p ng-class="task.status">
+
+          {{ task.task }}
+
+        </p>
+
+        <button class="btn complete_btn" ng-click="taskCtrl.markAsDone(task)">
+
+          Complete
+
+        </button>
+
+      </li>
+
+    </ul>
+
+    <button class="btn cleanUpBtn" ng-click="taskCtrl.cleanUp()">
+
+      Clear completed tasks
+
+    </button>
+
+  </body>
+
+</html>
