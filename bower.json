@@ -1,0 +1,21 @@
+{
+  "name": "todo_challenge",
+  "version": "0.0.0",
+  "homepage": "https://github.com/TheoLeanse/todo_challenge",
+  "authors": [
+    "TheoLeanse <theoleanse@gmail.com>"
+  ],
+  "description": "todo in angular",
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular-mocks": "~1.4.3"
+  }
+}
