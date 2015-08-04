@@ -16,12 +16,24 @@ describe('TaskController', function() {
     expect(ctrl.tasks.length).toEqual(1);
   });
 
-  it('marks task status as completed', function() {
+  it('adds tasks with a default status of \'to-do\'', function() {
     ctrl.addTask('Go gym');
     var task = ctrl.tasks[0];
     expect(task.status).toBe('to-do');
-    ctrl.markAsDone(task);
+  });
+
+  it('marks task status as completed', function() {
+    ctrl.addTask('Go gym');
+    var task = ctrl.tasks[0];
+    ctrl.markDone(task);
     expect(task.status).toBe('completed');
+  });
+
+  it('marks task status as important', function() {
+    ctrl.addTask('Go gym');
+    var task = ctrl.tasks[0];
+    ctrl.markImportant(task);
+    expect(task.status).toBe('important');
   });
 
   it('lists tasks by status', function() {
@@ -32,7 +44,7 @@ describe('TaskController', function() {
     ctrl.addTask('Go gym');
     ctrl.addTask('Go shops');
     var task = ctrl.tasks[0];
-    ctrl.markAsDone(task);
+    ctrl.markDone(task);
     ctrl.cleanUp();
     expect(ctrl.tasks.length).toEqual(1);
   });

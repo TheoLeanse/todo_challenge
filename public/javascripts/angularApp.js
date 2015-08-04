@@ -1,23 +1,33 @@
 var ToDoApp = angular.module('ToDoApp', [])
+  .controller('TaskController', TaskController);
 
-.controller('TaskController', function() {
-  var vm     = this;
-  vm.tasks   = [];
+function TaskController() {
+  var vm = this;
 
-  vm.addTask = function(task) {
-    vm.tasks.push({
-      'task': task,
-      'status': 'to-do'
-    });
-  };
+  vm.tasks    = [];
+  vm.addTask  = addTask;
+  vm.markImportant = markImportant;
+  vm.markDone = markDone;
+  vm.cleanUp  = cleanUp;
+}
 
-  vm.markAsDone = function (task) {
-    task.status = 'completed';
-  };
+function addTask(task) {
+  this.tasks.push({
+    'task': task,
+    'status': 'to-do'
+  });
+}
 
-  vm.cleanUp = function() {
-    vm.tasks = vm.tasks.filter(function(el) {
-      return (el.status === 'to-do');
-    });
-  };
-});
+function markImportant(task) {
+  task.status = 'important';
+}
+
+function markDone(task) {
+  task.status = 'completed';
+}
+
+function cleanUp() {
+  this.tasks = this.tasks.filter(function(task) {
+    return (task.status === 'to-do');
+  });
+}

@@ -1,11 +1,12 @@
 var express = require("express");
 var app = express();
 
-app.set('views', './views');
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.static('bower_components'));
+
+app.set('views', './views');
+app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
 
 app.get('/', function(req, res) {
   res.render('index.html');

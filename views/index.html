@@ -36,9 +36,35 @@
 
         </p>
 
-        <button class="btn complete_btn" ng-click="taskCtrl.markAsDone(task)">
+        <button class="btn importantBtn" ng-click="taskCtrl.markImportant(task)">
+
+          Important
+
+        </button>
+
+        <button class="btn editBtn" ng-click"">
+
+          Edit
+
+        </button>
+
+        <input ng-model="taskCtrl.editTask"></input>
+
+        <button class="btn editSubmitBtn">
+
+          Submit edit
+          
+        </button>
+
+        <button class="btn completeBtn" ng-click="taskCtrl.markDone(task)">
 
           Complete
+
+        </button>
+
+        <button class="btn resetBtn">
+
+          Reset
 
         </button>
 
