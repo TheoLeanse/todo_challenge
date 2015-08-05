@@ -23,7 +23,7 @@
     <input ng-model="taskCtrl.submittedTask"></input>
 
     <button class="taskSubmitBtn"
-            ng-click="taskCtrl.addTask(taskCtrl.submittedTask); taskCtrl.submittedTask = ''">
+            ng-click="taskCtrl.addTask(taskCtrl.submittedTask); taskCtrl.submittedTask=''">
 
       Add Task
 
@@ -40,7 +40,7 @@
         </p>
 
         <button class="btn importantBtn"
-                ng-click="taskCtrl.markImportant(task)">
+                ng-click="task.status='important'">
 
           Important
 
@@ -55,20 +55,20 @@
         <input ng-model="taskCtrl.editText"></input>
 
         <button class="btn editSubmitBtn"
-                ng-click="taskCtrl.editTask(task, taskCtrl.editText); taskCtrl.editText=''">
+                ng-click="task.task = taskCtrl.editText; taskCtrl.editText=''">
 
           Submit edit
 
         </button>
 
         <button class="btn completeBtn"
-                ng-click="taskCtrl.markDone(task)">
+                ng-click="task.status='completed'">
 
           Complete
 
         </button>
 
-        <button class="btn resetBtn" ng-click="ctrl.resetTaskStatus(task); task.status = 'to-do'">
+        <button class="btn resetBtn" ng-click="task.status='to-do'">
 
           Reset
 
