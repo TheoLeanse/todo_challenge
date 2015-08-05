@@ -12,6 +12,8 @@
 
     <script src="angular/angular.js"></script>
 
+    <script src="angular-xeditable/dist/js/xeditable.js"></script>
+
     <script src="javascripts/angularApp.js"></script>
 
   </head>
@@ -20,7 +22,8 @@
 
     <input ng-model="taskCtrl.submittedTask"></input>
 
-    <button id="task_submit_button" ng-click="taskCtrl.addTask(taskCtrl.submittedTask); taskCtrl.submittedTask = ''">
+    <button class="taskSubmitBtn"
+            ng-click="taskCtrl.addTask(taskCtrl.submittedTask); taskCtrl.submittedTask = ''">
 
       Add Task
 
@@ -36,33 +39,36 @@
 
         </p>
 
-        <button class="btn importantBtn" ng-click="taskCtrl.markImportant(task)">
+        <button class="btn importantBtn"
+                ng-click="taskCtrl.markImportant(task)">
 
           Important
 
         </button>
 
-        <button class="btn editBtn" ng-click"">
+        <button class="btn editBtn">
 
           Edit
 
         </button>
 
-        <input ng-model="taskCtrl.editTask"></input>
+        <input ng-model="taskCtrl.editText"></input>
 
-        <button class="btn editSubmitBtn">
+        <button class="btn editSubmitBtn"
+                ng-click="taskCtrl.editTask(task, taskCtrl.editText); taskCtrl.editText=''">
 
           Submit edit
-          
+
         </button>
 
-        <button class="btn completeBtn" ng-click="taskCtrl.markDone(task)">
+        <button class="btn completeBtn"
+                ng-click="taskCtrl.markDone(task)">
 
           Complete
 
         </button>
 
-        <button class="btn resetBtn">
+        <button class="btn resetBtn" ng-click="ctrl.resetTaskStatus(task); task.status = 'to-do'">
 
           Reset
 
@@ -75,6 +81,13 @@
     <button class="btn cleanUpBtn" ng-click="taskCtrl.cleanUp()">
 
       Clear completed tasks
+
+    </button>
+
+    <button class="btn clearAllBtn"
+            ng-click="taskCtrl.clearAll()">
+
+      Clear all tasks
 
     </button>
 

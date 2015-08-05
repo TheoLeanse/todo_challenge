@@ -1,23 +1,24 @@
 describe('To Do: main page', function() {
 
   afterEach(function() {
-    // some teardown - clear all tasks?
+    clearAll.click();
   });
 
   var tasks         = element.all(by.repeater('task in taskCtrl.tasks'));
   var task          = element(by.binding('task.task'));
   var submitBox     = element(by.model('taskCtrl.submittedTask'));
-  var submitBtn     = element(by.id('task_submit_button'));
+  var editInput     = element(by.model('taskCtrl.editText'));
+  var submitBtn     = element(by.css('.taskSubmitBtn'));
   var completeBtn   = element(by.css('.completeBtn'));
   var clearBtn      = element(by.css('.cleanUpBtn'));
   var completeTask  = element(by.css('.completed'));
   var importantTask = element(by.css('.important'));
   var resetBtn      = element(by.css('.resetBtn'));
-  var toDoTask      = element(by.css('.to-do'));
+  // var toDoTask      = element(by.css('.to-do'));
   var importantBtn  = element(by.css('.importantBtn'));
   var editBtn       = element(by.css('.editBtn'));
-  var editInput     = element(by.model('taskCtrl.editTask'));
   var editSubmitBtn = element(by.css('.editSubmitBtn'));
+  var clearAll      = element(by.css('.clearAllBtn'));
 
 
   function addTask() {
@@ -44,10 +45,13 @@ describe('To Do: main page', function() {
   describe('editing tasks', function() {
     it('allows the user to edit a task', function() {
       addTask();
+      // expect edit field to be hidden
       editBtn.click();
+      // expect edit field to be shown
       editInput.sendKeys('Go shops');
       editSubmitBtn.click();
       expect(task.getText()).toEqual('Go shops');
+      // expect edit field to be hidden
     });
   });
 
@@ -62,10 +66,16 @@ describe('To Do: main page', function() {
       addTask();
       importantBtn.click();
       resetBtn.click();
-      expect(toDoTask.getText()).toEqual('Go gym');
+      expect(element(by.css('.to-do')).getText()).toEqual('Go gym');
     });
 
     it('does not show important and reset buttons simultaneously', function() {
+
+    });
+  });
+
+  describe('filtering tasks', function() {
+    it('can display only important tasks', function() {
 
     });
   });

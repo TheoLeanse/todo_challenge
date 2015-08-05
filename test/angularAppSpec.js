@@ -40,6 +40,21 @@ describe('TaskController', function() {
 
   });
 
+  it('edits a task', function() {
+    ctrl.addTask('Go gym');
+    var task = ctrl.tasks[0];
+    ctrl.editTask(task, 'Go shops');
+    expect(task.task).toBe('Go shops');
+  });
+
+  it('resets important tasks to default status', function() {
+    ctrl.addTask('Go gym');
+    var task = ctrl.tasks[0];
+    ctrl.markImportant(task);
+    ctrl.resetTaskStatus(task);
+    expect(task.status).toBe('to-do');
+  });
+
   it('clears completed tasks', function() {
     ctrl.addTask('Go gym');
     ctrl.addTask('Go shops');
@@ -47,5 +62,11 @@ describe('TaskController', function() {
     ctrl.markDone(task);
     ctrl.cleanUp();
     expect(ctrl.tasks.length).toEqual(1);
+  });
+
+  it('clears all tasks', function() {
+    ctrl.addTask('Go gym');
+    ctrl.clearAll();
+    expect(ctrl.tasks.length).toEqual(0);
   });
 });
